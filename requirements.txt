@@ -1,0 +1,17 @@
+torch>=2.1.0
+torchvision>=0.16.0
+torchaudio>=2.1.0
+transformers>=4.38.0
+accelerate>=0.28.0
+datasets>=2.17.0
+optimum>=1.18.0
+huggingface_hub>=0.23.0
+numpy>=1.25.0
+scipy>=1.10.0
+sentencepiece>=0.1.99
+safetensors>=0.4.2
+tqdm>=4.66.1
+
+# Optional packages for optimized CPU inference on Intel hardware
+intel-extension-for-pytorch>=2.1.0
+neural-compressor>=2.4
