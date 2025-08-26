@@ -8,7 +8,7 @@ performs post-training quantization. If CUDA is available it uses
 falls back to PyTorch dynamic quantization (8-bit only).
 
 Example usage:
-    python quantize_llama_3.2_1b.py --bits 8 --output_dir ./model/llama3_2_1b_8bit
+    python quantize_llama_3.2_1b.py --bits 8 --output_dir ../model/llama3_2_1b_8bit
 """
 
 import argparse
