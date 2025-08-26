@@ -1,0 +1,5 @@
+# Ignore all files and subfolders under model/
+model/
+
+# But keep the folder itself
+!model/.gitkeep
