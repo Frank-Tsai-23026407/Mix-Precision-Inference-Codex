@@ -6,7 +6,7 @@ performs post-training quantization using AutoGPTQ. It can quantize the
 model to 8-bit or 2-bit precision depending on the ``--bits`` argument.
 
 Example usage:
-    python quantize_llama_3.2_1b.py --bits 8 --output_dir ./model/llama3_2_1b_8bit
+    python quantize_llama_3.2_1b.py --bits 8 --output_dir ../model/llama3_2_1b_8bit
 """
 
 import argparse
