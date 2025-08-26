@@ -13,3 +13,6 @@ scipy>=1.10.0
 sentencepiece>=0.1.99
 safetensors>=0.4.2
 tqdm>=4.66.1
+# Optional packages for optimized CPU inference on Intel hardware
+intel-extension-for-pytorch>=2.1.0
+neural-compressor>=2.4
