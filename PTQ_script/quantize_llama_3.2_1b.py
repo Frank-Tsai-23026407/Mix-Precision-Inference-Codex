@@ -2,6 +2,7 @@
 """Post-training quantization script for Llama 3.2 1B.
 
 This script downloads the Llama 3.2 1B model from Hugging Face and
+
 performs post-training quantization. If CUDA is available it uses
 ``AutoGPTQ`` for 8-bit or 2-bit quantization. On CPU-only machines it
 falls back to PyTorch dynamic quantization (8-bit only).
@@ -14,12 +15,14 @@ import argparse
 from pathlib import Path
 
 from datasets import load_dataset
+
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 try:  # AutoGPTQ is optional and requires CUDA
     from auto_gptq import AutoGPTQForCausalLM, BaseQuantizeConfig
 except Exception:  # pragma: no cover - auto_gptq may be absent
     AutoGPTQForCausalLM = BaseQuantizeConfig = None
+
 
 
 def build_calibration_dataset(tokenizer, nsamples: int, max_length: int):
@@ -38,6 +41,7 @@ def build_calibration_dataset(tokenizer, nsamples: int, max_length: int):
 def quantize(model_id: str, bits: int, output_dir: str, nsamples: int, max_length: int):
     """Quantize the specified model and save it to ``output_dir``."""
     tokenizer = AutoTokenizer.from_pretrained(model_id, use_fast=True)
+
 
     if torch.cuda.is_available() and AutoGPTQForCausalLM is not None:
         quant_cfg = BaseQuantizeConfig(bits=bits, group_size=128, desc_act=False)
@@ -64,6 +68,7 @@ def quantize(model_id: str, bits: int, output_dir: str, nsamples: int, max_lengt
         Path(output_dir).mkdir(parents=True, exist_ok=True)
         model_quant.save_pretrained(output_dir)
         tokenizer.save_pretrained(output_dir)
+
 
 
 if __name__ == "__main__":
